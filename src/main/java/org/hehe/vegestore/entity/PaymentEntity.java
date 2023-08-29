@@ -1,6 +1,6 @@
 package org.hehe.vegestore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity(name = "payment")
@@ -11,7 +11,7 @@ public class PaymentEntity {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private OrdersEntity orderID;
+    private OrdersEntity order;
 
     @Column(name = "payment_amount")
     private int paymentAmount;
@@ -24,18 +24,18 @@ public class PaymentEntity {
 
     @ManyToOne
     @JoinColumn(name = "payment_status_id")
-    private PaymentStatusEntity paymentStatusID;
+    private PaymentStatusEntity paymentStatus;
 
     public PaymentEntity() {
     }
 
-    public PaymentEntity(int id, OrdersEntity orderID, int paymentAmount, Date paymentDate, String paymentMethod, PaymentStatusEntity paymentStatusID) {
+    public PaymentEntity(int id, OrdersEntity order, int paymentAmount, Date paymentDate, String paymentMethod, PaymentStatusEntity paymentStatus) {
         this.id = id;
-        this.orderID = orderID;
+        this.order = order;
         this.paymentAmount = paymentAmount;
         this.paymentDate = paymentDate;
         this.paymentMethod = paymentMethod;
-        this.paymentStatusID = paymentStatusID;
+        this.paymentStatus = paymentStatus;
     }
 
     public int getId() {
@@ -46,12 +46,12 @@ public class PaymentEntity {
         this.id = id;
     }
 
-    public OrdersEntity getOrderID() {
-        return orderID;
+    public OrdersEntity getOrder() {
+        return order;
     }
 
-    public void setOrderID(OrdersEntity orderID) {
-        this.orderID = orderID;
+    public void setOrder(OrdersEntity order) {
+        this.order = order;
     }
 
     public int getPaymentAmount() {
@@ -78,11 +78,11 @@ public class PaymentEntity {
         this.paymentMethod = paymentMethod;
     }
 
-    public PaymentStatusEntity getPaymentStatusID() {
-        return paymentStatusID;
+    public PaymentStatusEntity getPaymentStatus() {
+        return paymentStatus;
     }
 
-    public void setPaymentStatusID(PaymentStatusEntity paymentStatusID) {
-        this.paymentStatusID = paymentStatusID;
+    public void setPaymentStatus(PaymentStatusEntity paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 }

@@ -1,7 +1,9 @@
 package org.hehe.vegestore.entity;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity(name = "shippingaddress")
 public class ShippingAddressEntity {
@@ -11,7 +13,7 @@ public class ShippingAddressEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UsersEntity userID;
+    private UsersEntity user;
 
     @Column(name = "address_line")
     private String addressLine;
@@ -22,12 +24,15 @@ public class ShippingAddressEntity {
     @Column(name = "postal_code")
     private int postalCode;
 
+    @OneToMany(mappedBy = "shippingAddress")
+    private Set<OrdersEntity> orders;
+
     public ShippingAddressEntity() {
     }
 
-    public ShippingAddressEntity(int id, UsersEntity userID, String addressLine, String city, int postalCode) {
+    public ShippingAddressEntity(int id, UsersEntity user, String addressLine, String city, int postalCode) {
         this.id = id;
-        this.userID = userID;
+        this.user = user;
         this.addressLine = addressLine;
         this.city = city;
         this.postalCode = postalCode;
@@ -41,12 +46,12 @@ public class ShippingAddressEntity {
         this.id = id;
     }
 
-    public UsersEntity getUserID() {
-        return userID;
+    public UsersEntity getUser() {
+        return user;
     }
 
-    public void setUserID(UsersEntity userID) {
-        this.userID = userID;
+    public void setUser(UsersEntity user) {
+        this.user = user;
     }
 
     public String getAddressLine() {

@@ -1,7 +1,7 @@
 package org.hehe.vegestore.entity;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity(name = "rating")
@@ -13,16 +13,16 @@ public class RatingEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "ratingID")
-    private Set<ReviewsEntity> ratingReview;
+    @OneToMany(mappedBy = "rating")
+    private Set<ReviewsEntity> reviews;
 
     public RatingEntity() {
     }
 
-    public RatingEntity(int id, String description, Set<ReviewsEntity> ratingReview) {
+    public RatingEntity(int id, String description, Set<ReviewsEntity> reviews) {
         this.id = id;
         this.description = description;
-        this.ratingReview = ratingReview;
+        this.reviews = reviews;
     }
 
     public int getId() {
@@ -41,11 +41,11 @@ public class RatingEntity {
         this.description = description;
     }
 
-    public Set<ReviewsEntity> getRatingReview() {
-        return ratingReview;
+    public Set<ReviewsEntity> getReviews() {
+        return reviews;
     }
 
-    public void setRatingReview(Set<ReviewsEntity> ratingReview) {
-        this.ratingReview = ratingReview;
+    public void setReviews(Set<ReviewsEntity> reviews) {
+        this.reviews = reviews;
     }
 }

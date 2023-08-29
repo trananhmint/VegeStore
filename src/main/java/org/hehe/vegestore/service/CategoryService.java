@@ -45,11 +45,11 @@ public class CategoryService implements ICategoryService {
             categoryEntity.setName(categoryResquest.getName());
 
             UsersEntity usersEntity = new UsersEntity();
-            usersEntity.setUserID(categoryResquest.getCreationUserID());
-            categoryEntity.setCreationUserID(usersEntity);
+            usersEntity.setId(categoryResquest.getCreationUserID());
+            categoryEntity.setCreationUser(usersEntity);
 
-            usersEntity.setUserID(categoryResquest.getLastUpdateUserID());
-            categoryEntity.setLastUpdateUserID(usersEntity);
+            usersEntity.setId(categoryResquest.getLastUpdateUserID());
+            categoryEntity.setLastUpdateUser(usersEntity);
 
             categoryEntity.setCreationTimestamp(categoryResquest.getCreationTimestamp());
             categoryEntity.setLastUpdateTimestamp(categoryResquest.getLastUpdateTimestamp());

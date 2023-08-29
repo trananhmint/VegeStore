@@ -1,7 +1,7 @@
 package org.hehe.vegestore.entity;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
@@ -17,37 +17,37 @@ public class CategoryEntity {
 
     @ManyToOne
     @JoinColumn(name = "creation_user_id")
-    private UsersEntity creationUserID;
+    private UsersEntity creationUser;
 
     @Column(name = "creation_timestamp")
     private Date creationTimestamp;
 
     @ManyToOne
     @JoinColumn(name = "last_update_userid")
-    private UsersEntity lastUpdateUserID;
+    private UsersEntity lastUpdateUser;
 
     @Column(name = "last_update_timestamp")
     private Date lastUpdateTimestamp;
 
     @ManyToOne
     @JoinColumn(name = "status_id")
-    private StatusEntity statusID;
+    private StatusEntity status;
 
-    @OneToMany(mappedBy = "categoryID")
-    private Set<ProductsEntity> categoryProduct;
-
-    public CategoryEntity(int id, String name, UsersEntity creationUserID, Date creationTimestamp, UsersEntity lastUpdateUserID, Date lastUpdateTimestamp, StatusEntity statusID, Set<ProductsEntity> categoryProduct) {
-        this.id = id;
-        this.name = name;
-        this.creationUserID = creationUserID;
-        this.creationTimestamp = creationTimestamp;
-        this.lastUpdateUserID = lastUpdateUserID;
-        this.lastUpdateTimestamp = lastUpdateTimestamp;
-        this.statusID = statusID;
-        this.categoryProduct = categoryProduct;
-    }
+    @OneToMany(mappedBy = "category")
+    private Set<ProductsEntity> products;
 
     public CategoryEntity() {
+    }
+
+    public CategoryEntity(int id, String name, UsersEntity creationUser, Date creationTimestamp, UsersEntity lastUpdateUser, Date lastUpdateTimestamp, StatusEntity status, Set<ProductsEntity> products) {
+        this.id = id;
+        this.name = name;
+        this.creationUser = creationUser;
+        this.creationTimestamp = creationTimestamp;
+        this.lastUpdateUser = lastUpdateUser;
+        this.lastUpdateTimestamp = lastUpdateTimestamp;
+        this.status = status;
+        this.products = products;
     }
 
     public int getId() {
@@ -66,12 +66,12 @@ public class CategoryEntity {
         this.name = name;
     }
 
-    public UsersEntity getCreationUserID() {
-        return creationUserID;
+    public UsersEntity getCreationUser() {
+        return creationUser;
     }
 
-    public void setCreationUserID(UsersEntity creationUserID) {
-        this.creationUserID = creationUserID;
+    public void setCreationUser(UsersEntity creationUser) {
+        this.creationUser = creationUser;
     }
 
     public Date getCreationTimestamp() {
@@ -82,12 +82,12 @@ public class CategoryEntity {
         this.creationTimestamp = creationTimestamp;
     }
 
-    public UsersEntity getLastUpdateUserID() {
-        return lastUpdateUserID;
+    public UsersEntity getLastUpdateUser() {
+        return lastUpdateUser;
     }
 
-    public void setLastUpdateUserID(UsersEntity lastUpdateUserID) {
-        this.lastUpdateUserID = lastUpdateUserID;
+    public void setLastUpdateUser(UsersEntity lastUpdateUser) {
+        this.lastUpdateUser = lastUpdateUser;
     }
 
     public Date getLastUpdateTimestamp() {
@@ -98,19 +98,19 @@ public class CategoryEntity {
         this.lastUpdateTimestamp = lastUpdateTimestamp;
     }
 
-    public StatusEntity getStatusID() {
-        return statusID;
+    public StatusEntity getStatus() {
+        return status;
     }
 
-    public void setStatusID(StatusEntity statusID) {
-        this.statusID = statusID;
+    public void setStatus(StatusEntity status) {
+        this.status = status;
     }
 
-    public Set<ProductsEntity> getCategoryProduct() {
-        return categoryProduct;
+    public Set<ProductsEntity> getProducts() {
+        return products;
     }
 
-    public void setCategoryProduct(Set<ProductsEntity> categoryProduct) {
-        this.categoryProduct = categoryProduct;
+    public void setProducts(Set<ProductsEntity> products) {
+        this.products = products;
     }
 }

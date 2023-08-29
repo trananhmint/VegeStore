@@ -1,7 +1,7 @@
 package org.hehe.vegestore.entity;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity(name = "cartitems")
 public class CartItemsEntity {
@@ -12,11 +12,11 @@ public class CartItemsEntity {
 
     @ManyToOne
     @JoinColumn(name = "cart_id", insertable = false,updatable = false)
-    private CartEntity cartID;
+    private CartEntity cart;
 
     @ManyToOne
     @JoinColumn(name = "product_id", insertable = false,updatable = false)
-    private ProductsEntity productID;
+    private ProductsEntity product;
 
     @Column(name = "quantity")
     private int quantity;
@@ -24,10 +24,10 @@ public class CartItemsEntity {
     public CartItemsEntity() {
     }
 
-    public CartItemsEntity(int id, CartEntity cartID, ProductsEntity productID, int quantity) {
+    public CartItemsEntity(int id, CartEntity cart, ProductsEntity product, int quantity) {
         this.id = id;
-        this.cartID = cartID;
-        this.productID = productID;
+        this.cart = cart;
+        this.product = product;
         this.quantity = quantity;
     }
 
@@ -39,20 +39,20 @@ public class CartItemsEntity {
         this.id = id;
     }
 
-    public CartEntity getCartID() {
-        return cartID;
+    public CartEntity getCart() {
+        return cart;
     }
 
-    public void setCartID(CartEntity cartID) {
-        this.cartID = cartID;
+    public void setCart(CartEntity cart) {
+        this.cart = cart;
     }
 
-    public ProductsEntity getProductID() {
-        return productID;
+    public ProductsEntity getProduct() {
+        return product;
     }
 
-    public void setProductID(ProductsEntity productID) {
-        this.productID = productID;
+    public void setProduct(ProductsEntity product) {
+        this.product = product;
     }
 
     public int getQuantity() {

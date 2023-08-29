@@ -1,7 +1,7 @@
 package org.hehe.vegestore.entity;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
@@ -13,7 +13,7 @@ public class OrdersEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UsersEntity userID;
+    private UsersEntity user;
 
     @Column(name = "order_date")
     private Date orderDate;
@@ -22,26 +22,31 @@ public class OrdersEntity {
     private float totalAmount;
 
     @ManyToOne
+    @JoinColumn(name = "shipping_address_id")
+    private ShippingAddressEntity shippingAddress;
+
+    @ManyToOne
     @JoinColumn(name = "order_status_id")
-    private OrderStatusEntity orderStatusID;
+    private OrderStatusEntity orderStatus;
 
-    @OneToMany(mappedBy = "orderID")
-    private Set<OrderItemsEntity> orderOrderItem;
+    @OneToMany(mappedBy = "order")
+    private Set<OrderItemsEntity> orderItems;
 
-    @OneToMany(mappedBy = "orderID")
-    private Set<PaymentEntity> orderPayment;
+    @OneToMany(mappedBy = "order")
+    private Set<PaymentEntity> payments;
 
     public OrdersEntity() {
     }
 
-    public OrdersEntity(int id, UsersEntity userID, Date orderDate, float totalAmount, OrderStatusEntity orderStatusID, Set<OrderItemsEntity> orderOrderItem, Set<PaymentEntity> orderPayment) {
+    public OrdersEntity(int id, UsersEntity user, Date orderDate, float totalAmount, ShippingAddressEntity shippingAddress, OrderStatusEntity orderStatus, Set<OrderItemsEntity> orderItems, Set<PaymentEntity> payments) {
         this.id = id;
-        this.userID = userID;
+        this.user = user;
         this.orderDate = orderDate;
         this.totalAmount = totalAmount;
-        this.orderStatusID = orderStatusID;
-        this.orderOrderItem = orderOrderItem;
-        this.orderPayment = orderPayment;
+        this.shippingAddress = shippingAddress;
+        this.orderStatus = orderStatus;
+        this.orderItems = orderItems;
+        this.payments = payments;
     }
 
     public int getId() {
@@ -52,12 +57,12 @@ public class OrdersEntity {
         this.id = id;
     }
 
-    public UsersEntity getUserID() {
-        return userID;
+    public UsersEntity getUser() {
+        return user;
     }
 
-    public void setUserID(UsersEntity userID) {
-        this.userID = userID;
+    public void setUser(UsersEntity user) {
+        this.user = user;
     }
 
     public Date getOrderDate() {
@@ -76,27 +81,35 @@ public class OrdersEntity {
         this.totalAmount = totalAmount;
     }
 
-    public OrderStatusEntity getOrderStatusID() {
-        return orderStatusID;
+    public ShippingAddressEntity getShippingAddress() {
+        return shippingAddress;
     }
 
-    public void setOrderStatusID(OrderStatusEntity orderStatusID) {
-        this.orderStatusID = orderStatusID;
+    public void setShippingAddress(ShippingAddressEntity shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
-    public Set<OrderItemsEntity> getOrderOrderItem() {
-        return orderOrderItem;
+    public OrderStatusEntity getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrderOrderItem(Set<OrderItemsEntity> orderOrderItem) {
-        this.orderOrderItem = orderOrderItem;
+    public void setOrderStatus(OrderStatusEntity orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
-    public Set<PaymentEntity> getOrderPayment() {
-        return orderPayment;
+    public Set<OrderItemsEntity> getOrderItems() {
+        return orderItems;
     }
 
-    public void setOrderPayment(Set<PaymentEntity> orderPayment) {
-        this.orderPayment = orderPayment;
+    public void setOrderItems(Set<OrderItemsEntity> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public Set<PaymentEntity> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Set<PaymentEntity> payments) {
+        this.payments = payments;
     }
 }

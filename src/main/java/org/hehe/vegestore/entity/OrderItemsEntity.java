@@ -1,9 +1,9 @@
 package org.hehe.vegestore.entity;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
-@Entity(name = "OrderItems")
+@Entity(name = "orderitems")
 public class OrderItemsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,11 +11,11 @@ public class OrderItemsEntity {
 
     @ManyToOne
     @JoinColumn(name = "order_id", insertable = false, updatable = false)
-    private OrdersEntity orderID;
+    private OrdersEntity order;
 
     @ManyToOne
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
-    private ProductsEntity productID;
+    private ProductsEntity product;
 
     @Column(name = "quantity")
     private int quantity;
@@ -29,10 +29,10 @@ public class OrderItemsEntity {
     public OrderItemsEntity() {
     }
 
-    public OrderItemsEntity(int id, OrdersEntity orderID, ProductsEntity productID, int quantity, float unitPrice, float totalPrice) {
+    public OrderItemsEntity(int id, OrdersEntity order, ProductsEntity product, int quantity, float unitPrice, float totalPrice) {
         this.id = id;
-        this.orderID = orderID;
-        this.productID = productID;
+        this.order = order;
+        this.product = product;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.totalPrice = totalPrice;
@@ -46,20 +46,20 @@ public class OrderItemsEntity {
         this.id = id;
     }
 
-    public OrdersEntity getOrderID() {
-        return orderID;
+    public OrdersEntity getOrder() {
+        return order;
     }
 
-    public void setOrderID(OrdersEntity orderID) {
-        this.orderID = orderID;
+    public void setOrder(OrdersEntity order) {
+        this.order = order;
     }
 
-    public ProductsEntity getProductID() {
-        return productID;
+    public ProductsEntity getProduct() {
+        return product;
     }
 
-    public void setProductID(ProductsEntity productID) {
-        this.productID = productID;
+    public void setProduct(ProductsEntity product) {
+        this.product = product;
     }
 
     public int getQuantity() {

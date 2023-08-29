@@ -2,7 +2,7 @@ package org.hehe.vegestore.entity;
 
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity(name = "orderstatus")
@@ -14,16 +14,16 @@ public class OrderStatusEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "orderStatusID")
-    private Set<OrdersEntity> orderStatusOrder;
+    @OneToMany(mappedBy = "orderStatus")
+    private Set<OrdersEntity> orders;
 
     public OrderStatusEntity() {
     }
 
-    public OrderStatusEntity(int id, String description, Set<OrdersEntity> orderStatusOrder) {
+    public OrderStatusEntity(int id, String description, Set<OrdersEntity> orders) {
         this.id = id;
         this.description = description;
-        this.orderStatusOrder = orderStatusOrder;
+        this.orders = orders;
     }
 
     public int getId() {
@@ -42,11 +42,11 @@ public class OrderStatusEntity {
         this.description = description;
     }
 
-    public Set<OrdersEntity> getOrderStatusOrder() {
-        return orderStatusOrder;
+    public Set<OrdersEntity> getOrders() {
+        return orders;
     }
 
-    public void setOrderStatusOrder(Set<OrdersEntity> orderStatusOrder) {
-        this.orderStatusOrder = orderStatusOrder;
+    public void setOrders(Set<OrdersEntity> orders) {
+        this.orders = orders;
     }
 }

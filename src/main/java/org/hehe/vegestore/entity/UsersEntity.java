@@ -2,7 +2,7 @@ package org.hehe.vegestore.entity;
 
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import java.util.Set;
 public class UsersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userID;
+    private int id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -44,37 +44,37 @@ public class UsersEntity {
 
     @ManyToOne
     @JoinColumn(name = "status_id")
-    private StatusEntity statusID;
+    private StatusEntity status;
 
-    @OneToMany(mappedBy = "creationUserID")
-    private Set<CategoryEntity> creationCategory;
+    @OneToMany(mappedBy = "creationUser")
+    private Set<CategoryEntity> creationCategories;
 
-    @OneToMany(mappedBy = "lastUpdateUserID")
-    private Set<CategoryEntity> lastUpdateCategory;
+    @OneToMany(mappedBy = "lastUpdateUser")
+    private Set<CategoryEntity> lastUpdateCategories;
 
-    @OneToMany(mappedBy = "creationUserID")
-    private Set<ProductsEntity> creationProduct;
+    @OneToMany(mappedBy = "creationUser")
+    private Set<ProductsEntity> creationProducts;
 
-    @OneToMany(mappedBy = "lastUpdateUserID")
-    private Set<ProductsEntity> lastUpdateProduct;
+    @OneToMany(mappedBy = "lastUpdateUser")
+    private Set<ProductsEntity> lastUpdateProducts;
 
-    @OneToMany(mappedBy = "userID")
-    private Set<ReviewsEntity> userReview;
+    @OneToMany(mappedBy = "user")
+    private Set<ReviewsEntity> reviews;
 
-    @OneToMany(mappedBy = "userID")
-    private Set<CartEntity> userCart;
+    @OneToMany(mappedBy = "user")
+    private Set<CartEntity> carts;
 
-    @OneToMany(mappedBy = "userID")
-    private Set<OrdersEntity> userOrder;
+    @OneToMany(mappedBy = "user")
+    private Set<OrdersEntity> orders;
 
-    @OneToMany(mappedBy = "userID")
-    private Set<ShippingAddressEntity> userShippingAddress;
+    @OneToMany(mappedBy = "user")
+    private Set<ShippingAddressEntity> shippingAddresses;
 
     public UsersEntity() {
     }
 
-    public UsersEntity(int userID, String firstName, String lastName, String userName, String password, String email, String phone, Date dob, String gender, Date registrationDate, Date lastLoginDate, StatusEntity statusID, Set<CategoryEntity> creationCategory, Set<CategoryEntity> lastUpdateCategory, Set<ProductsEntity> creationProduct, Set<ProductsEntity> lastUpdateProduct, Set<ReviewsEntity> userReview, Set<CartEntity> userCart, Set<OrdersEntity> userOrder, Set<ShippingAddressEntity> userShippingAddress) {
-        this.userID = userID;
+    public UsersEntity(int id, String firstName, String lastName, String userName, String password, String email, String phone, Date dob, String gender, Date registrationDate, Date lastLoginDate, StatusEntity status, Set<CategoryEntity> creationCategories, Set<CategoryEntity> lastUpdateCategories, Set<ProductsEntity> creationProducts, Set<ProductsEntity> lastUpdateProducts, Set<ReviewsEntity> reviews, Set<CartEntity> carts, Set<OrdersEntity> orders, Set<ShippingAddressEntity> shippingAddresses) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -85,23 +85,23 @@ public class UsersEntity {
         this.gender = gender;
         this.registrationDate = registrationDate;
         this.lastLoginDate = lastLoginDate;
-        this.statusID = statusID;
-        this.creationCategory = creationCategory;
-        this.lastUpdateCategory = lastUpdateCategory;
-        this.creationProduct = creationProduct;
-        this.lastUpdateProduct = lastUpdateProduct;
-        this.userReview = userReview;
-        this.userCart = userCart;
-        this.userOrder = userOrder;
-        this.userShippingAddress = userShippingAddress;
+        this.status = status;
+        this.creationCategories = creationCategories;
+        this.lastUpdateCategories = lastUpdateCategories;
+        this.creationProducts = creationProducts;
+        this.lastUpdateProducts = lastUpdateProducts;
+        this.reviews = reviews;
+        this.carts = carts;
+        this.orders = orders;
+        this.shippingAddresses = shippingAddresses;
     }
 
-    public int getUserID() {
-        return userID;
+    public int getId() {
+        return id;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -184,75 +184,75 @@ public class UsersEntity {
         this.lastLoginDate = lastLoginDate;
     }
 
-    public StatusEntity getStatusID() {
-        return statusID;
+    public StatusEntity getStatus() {
+        return status;
     }
 
-    public void setStatusID(StatusEntity statusID) {
-        this.statusID = statusID;
+    public void setStatus(StatusEntity status) {
+        this.status = status;
     }
 
-    public Set<CategoryEntity> getCreationCategory() {
-        return creationCategory;
+    public Set<CategoryEntity> getCreationCategories() {
+        return creationCategories;
     }
 
-    public void setCreationCategory(Set<CategoryEntity> creationCategory) {
-        this.creationCategory = creationCategory;
+    public void setCreationCategories(Set<CategoryEntity> creationCategories) {
+        this.creationCategories = creationCategories;
     }
 
-    public Set<CategoryEntity> getLastUpdateCategory() {
-        return lastUpdateCategory;
+    public Set<CategoryEntity> getLastUpdateCategories() {
+        return lastUpdateCategories;
     }
 
-    public void setLastUpdateCategory(Set<CategoryEntity> lastUpdateCategory) {
-        this.lastUpdateCategory = lastUpdateCategory;
+    public void setLastUpdateCategories(Set<CategoryEntity> lastUpdateCategories) {
+        this.lastUpdateCategories = lastUpdateCategories;
     }
 
-    public Set<ProductsEntity> getCreationProduct() {
-        return creationProduct;
+    public Set<ProductsEntity> getCreationProducts() {
+        return creationProducts;
     }
 
-    public void setCreationProduct(Set<ProductsEntity> creationProduct) {
-        this.creationProduct = creationProduct;
+    public void setCreationProducts(Set<ProductsEntity> creationProducts) {
+        this.creationProducts = creationProducts;
     }
 
-    public Set<ProductsEntity> getLastUpdateProduct() {
-        return lastUpdateProduct;
+    public Set<ProductsEntity> getLastUpdateProducts() {
+        return lastUpdateProducts;
     }
 
-    public void setLastUpdateProduct(Set<ProductsEntity> lastUpdateProduct) {
-        this.lastUpdateProduct = lastUpdateProduct;
+    public void setLastUpdateProducts(Set<ProductsEntity> lastUpdateProducts) {
+        this.lastUpdateProducts = lastUpdateProducts;
     }
 
-    public Set<ReviewsEntity> getUserReview() {
-        return userReview;
+    public Set<ReviewsEntity> getReviews() {
+        return reviews;
     }
 
-    public void setUserReview(Set<ReviewsEntity> userReview) {
-        this.userReview = userReview;
+    public void setReviews(Set<ReviewsEntity> reviews) {
+        this.reviews = reviews;
     }
 
-    public Set<CartEntity> getUserCart() {
-        return userCart;
+    public Set<CartEntity> getCarts() {
+        return carts;
     }
 
-    public void setUserCart(Set<CartEntity> userCart) {
-        this.userCart = userCart;
+    public void setCarts(Set<CartEntity> carts) {
+        this.carts = carts;
     }
 
-    public Set<OrdersEntity> getUserOrder() {
-        return userOrder;
+    public Set<OrdersEntity> getOrders() {
+        return orders;
     }
 
-    public void setUserOrder(Set<OrdersEntity> userOrder) {
-        this.userOrder = userOrder;
+    public void setOrders(Set<OrdersEntity> orders) {
+        this.orders = orders;
     }
 
-    public Set<ShippingAddressEntity> getUserShippingAddress() {
-        return userShippingAddress;
+    public Set<ShippingAddressEntity> getShippingAddresses() {
+        return shippingAddresses;
     }
 
-    public void setUserShippingAddress(Set<ShippingAddressEntity> userShippingAddress) {
-        this.userShippingAddress = userShippingAddress;
+    public void setShippingAddresses(Set<ShippingAddressEntity> shippingAddresses) {
+        this.shippingAddresses = shippingAddresses;
     }
 }

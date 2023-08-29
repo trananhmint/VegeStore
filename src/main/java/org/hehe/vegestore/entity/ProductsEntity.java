@@ -1,9 +1,7 @@
 package org.hehe.vegestore.entity;
 
 
-import javax.persistence.*;
-import java.sql.Time;
-import java.sql.Timestamp;
+import jakarta.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
@@ -24,7 +22,7 @@ public class ProductsEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private CategoryEntity categoryID;
+    private CategoryEntity category;
 
     @Column(name = "quantity")
     private int quantity;
@@ -34,50 +32,50 @@ public class ProductsEntity {
 
     @ManyToOne
     @JoinColumn(name = "creation_user_id")
-    private UsersEntity creationUserID;
+    private UsersEntity creationUser;
 
     @Column(name = "creation_timestamp")
     private Date creationTimestamp;
 
     @ManyToOne
     @JoinColumn(name = "last_update_userid")
-    private UsersEntity lastUpdateUserID;
+    private UsersEntity lastUpdateUser;
 
     @Column(name = "last_update_timestamp")
     private Date lastUpdateTimestamp;
 
     @ManyToOne
     @JoinColumn(name = "status_id")
-    private StatusEntity statusID;
+    private StatusEntity status;
 
-    @OneToMany(mappedBy = "productID")
-    private Set<ReviewsEntity> productReview;
+    @OneToMany(mappedBy = "product")
+    private Set<ReviewsEntity> reviews;
 
-    @OneToMany(mappedBy = "productID")
-    private Set<CartItemsEntity> productCartItem;
+    @OneToMany(mappedBy = "product")
+    private Set<CartItemsEntity> cartItems;
 
-    @OneToMany(mappedBy = "productID")
-    private Set<OrderItemsEntity> productOrderItem;
+    @OneToMany(mappedBy = "product")
+    private Set<OrderItemsEntity> orderItems;
 
     public ProductsEntity() {
     }
 
-    public ProductsEntity(int id, String name, String description, float price, CategoryEntity categoryID, int quantity, String imageURL, UsersEntity creationUserID, Date creationTimestamp, UsersEntity lastUpdateUserID, Date lastUpdateTimestamp, StatusEntity statusID, Set<ReviewsEntity> productReview, Set<CartItemsEntity> productCartItem, Set<OrderItemsEntity> productOrderItem) {
+    public ProductsEntity(int id, String name, String description, float price, CategoryEntity category, int quantity, String imageURL, UsersEntity creationUser, Date creationTimestamp, UsersEntity lastUpdateUser, Date lastUpdateTimestamp, StatusEntity status, Set<ReviewsEntity> reviews, Set<CartItemsEntity> cartItems, Set<OrderItemsEntity> orderItems) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.categoryID = categoryID;
+        this.category = category;
         this.quantity = quantity;
         this.imageURL = imageURL;
-        this.creationUserID = creationUserID;
+        this.creationUser = creationUser;
         this.creationTimestamp = creationTimestamp;
-        this.lastUpdateUserID = lastUpdateUserID;
+        this.lastUpdateUser = lastUpdateUser;
         this.lastUpdateTimestamp = lastUpdateTimestamp;
-        this.statusID = statusID;
-        this.productReview = productReview;
-        this.productCartItem = productCartItem;
-        this.productOrderItem = productOrderItem;
+        this.status = status;
+        this.reviews = reviews;
+        this.cartItems = cartItems;
+        this.orderItems = orderItems;
     }
 
     public int getId() {
@@ -112,12 +110,12 @@ public class ProductsEntity {
         this.price = price;
     }
 
-    public CategoryEntity getCategoryID() {
-        return categoryID;
+    public CategoryEntity getCategory() {
+        return category;
     }
 
-    public void setCategoryID(CategoryEntity categoryID) {
-        this.categoryID = categoryID;
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
     }
 
     public int getQuantity() {
@@ -136,12 +134,12 @@ public class ProductsEntity {
         this.imageURL = imageURL;
     }
 
-    public UsersEntity getCreationUserID() {
-        return creationUserID;
+    public UsersEntity getCreationUser() {
+        return creationUser;
     }
 
-    public void setCreationUserID(UsersEntity creationUserID) {
-        this.creationUserID = creationUserID;
+    public void setCreationUser(UsersEntity creationUser) {
+        this.creationUser = creationUser;
     }
 
     public Date getCreationTimestamp() {
@@ -152,12 +150,12 @@ public class ProductsEntity {
         this.creationTimestamp = creationTimestamp;
     }
 
-    public UsersEntity getLastUpdateUserID() {
-        return lastUpdateUserID;
+    public UsersEntity getLastUpdateUser() {
+        return lastUpdateUser;
     }
 
-    public void setLastUpdateUserID(UsersEntity lastUpdateUserID) {
-        this.lastUpdateUserID = lastUpdateUserID;
+    public void setLastUpdateUser(UsersEntity lastUpdateUser) {
+        this.lastUpdateUser = lastUpdateUser;
     }
 
     public Date getLastUpdateTimestamp() {
@@ -168,35 +166,35 @@ public class ProductsEntity {
         this.lastUpdateTimestamp = lastUpdateTimestamp;
     }
 
-    public StatusEntity getStatusID() {
-        return statusID;
+    public StatusEntity getStatus() {
+        return status;
     }
 
-    public void setStatusID(StatusEntity statusID) {
-        this.statusID = statusID;
+    public void setStatus(StatusEntity status) {
+        this.status = status;
     }
 
-    public Set<ReviewsEntity> getProductReview() {
-        return productReview;
+    public Set<ReviewsEntity> getReviews() {
+        return reviews;
     }
 
-    public void setProductReview(Set<ReviewsEntity> productReview) {
-        this.productReview = productReview;
+    public void setReviews(Set<ReviewsEntity> reviews) {
+        this.reviews = reviews;
     }
 
-    public Set<CartItemsEntity> getProductCartItem() {
-        return productCartItem;
+    public Set<CartItemsEntity> getCartItems() {
+        return cartItems;
     }
 
-    public void setProductCartItem(Set<CartItemsEntity> productCartItem) {
-        this.productCartItem = productCartItem;
+    public void setCartItems(Set<CartItemsEntity> cartItems) {
+        this.cartItems = cartItems;
     }
 
-    public Set<OrderItemsEntity> getProductOrderItem() {
-        return productOrderItem;
+    public Set<OrderItemsEntity> getOrderItems() {
+        return orderItems;
     }
 
-    public void setProductOrderItem(Set<OrderItemsEntity> productOrderItem) {
-        this.productOrderItem = productOrderItem;
+    public void setOrderItems(Set<OrderItemsEntity> orderItems) {
+        this.orderItems = orderItems;
     }
 }

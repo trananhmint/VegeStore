@@ -20,16 +20,17 @@ public class ProductsService implements IProductsService {
 
     @Override
     public ProductsResponse getDetailProduct(int id) {
-        Optional<ProductsEntity> product = productsRepository.findById(id);
-        ProductsResponse productResponse = new ProductsResponse();
-        if(product.isPresent()){
-            productResponse.setProductID(product.get().getId());
-            productResponse.setImageURL(product.get().getImageURL());
-            productResponse.setPrice(product.get().getPrice());
-            productResponse.setName(product.get().getName());
-            productResponse.setDescription(product.get().getDescription());
+        Optional<ProductsEntity> productsEntity = productsRepository.findById(id);
+        ProductsResponse productsResponse = null;
+        if (productsEntity.isPresent()) {
+            productsResponse = new ProductsResponse();
+            productsResponse.setProductID(productsEntity.get().getId());
+            productsResponse.setImageURL(productsEntity.get().getImageURL());
+            productsResponse.setPrice(productsEntity.get().getPrice());
+            productsResponse.setName(productsEntity.get().getName());
+            productsResponse.setDescription(productsEntity.get().getDescription());
         }
-        return productResponse;
+        return productsResponse;
     }
 
     @Override
@@ -44,7 +45,7 @@ public class ProductsService implements IProductsService {
             CategoryEntity categoryEntity = new CategoryEntity();
             categoryEntity.setId(productsResquest.getCategoryID());
 
-            productsEntity.setCategoryID(categoryEntity);
+            productsEntity.setCategory(categoryEntity);
 
             productsRepository.save(productsEntity);
             return true;
@@ -55,7 +56,9 @@ public class ProductsService implements IProductsService {
 
     @Override
     public List<ProductsResponse> getProductByCategoryId(int id) {
-        List<ProductsEntity> list = productsRepository.findByCategoryID(id);
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setId(id);
+        List<ProductsEntity> list = productsRepository.findByCategory(categoryEntity);
         List<ProductsResponse> listResponse = new ArrayList<>();
         for (ProductsEntity entity : list) {
             ProductsResponse response = new ProductsResponse();

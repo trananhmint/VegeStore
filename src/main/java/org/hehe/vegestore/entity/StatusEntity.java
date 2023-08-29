@@ -1,42 +1,42 @@
 package org.hehe.vegestore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 @Entity(name = "status")
 public class StatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int statusID;
+    private int id;
 
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "statusID")
-    private Set<UsersEntity> statusUser;
+    @OneToMany(mappedBy = "status")
+    private Set<UsersEntity> users;
 
-    @OneToMany(mappedBy = "statusID")
-    private Set<ProductsEntity> statusProduct;
+    @OneToMany(mappedBy = "status")
+    private Set<ProductsEntity> products;
 
-    @OneToMany(mappedBy = "statusID")
-    private Set<CategoryEntity> statusCategory;
+    @OneToMany(mappedBy = "status")
+    private Set<CategoryEntity> categories;
 
     public StatusEntity() {
     }
 
-    public StatusEntity(int statusID, String description, Set<UsersEntity> statusUser, Set<ProductsEntity> statusProduct, Set<CategoryEntity> statusCategory) {
-        this.statusID = statusID;
+    public StatusEntity(int id, String description, Set<UsersEntity> users, Set<ProductsEntity> products, Set<CategoryEntity> categories) {
+        this.id = id;
         this.description = description;
-        this.statusUser = statusUser;
-        this.statusProduct = statusProduct;
-        this.statusCategory = statusCategory;
+        this.users = users;
+        this.products = products;
+        this.categories = categories;
     }
 
-    public int getStatusID() {
-        return statusID;
+    public int getId() {
+        return id;
     }
 
-    public void setStatusID(int statusID) {
-        this.statusID = statusID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -47,27 +47,27 @@ public class StatusEntity {
         this.description = description;
     }
 
-    public Set<UsersEntity> getStatusUser() {
-        return statusUser;
+    public Set<UsersEntity> getUsers() {
+        return users;
     }
 
-    public void setStatusUser(Set<UsersEntity> statusUser) {
-        this.statusUser = statusUser;
+    public void setUsers(Set<UsersEntity> users) {
+        this.users = users;
     }
 
-    public Set<ProductsEntity> getStatusProduct() {
-        return statusProduct;
+    public Set<ProductsEntity> getProducts() {
+        return products;
     }
 
-    public void setStatusProduct(Set<ProductsEntity> statusProduct) {
-        this.statusProduct = statusProduct;
+    public void setProducts(Set<ProductsEntity> products) {
+        this.products = products;
     }
 
-    public Set<CategoryEntity> getStatusCategory() {
-        return statusCategory;
+    public Set<CategoryEntity> getCategories() {
+        return categories;
     }
 
-    public void setStatusCategory(Set<CategoryEntity> statusCategory) {
-        this.statusCategory = statusCategory;
+    public void setCategories(Set<CategoryEntity> categories) {
+        this.categories = categories;
     }
 }

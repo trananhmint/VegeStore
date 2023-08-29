@@ -1,7 +1,7 @@
 package org.hehe.vegestore.entity;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity(name = "cart")
@@ -12,18 +12,18 @@ public class CartEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UsersEntity userID;
+    private UsersEntity user;
 
-    @OneToMany(mappedBy = "cartID")
-    private Set<CartItemsEntity> cartCartItem;
+    @OneToMany(mappedBy = "cart")
+    private Set<CartItemsEntity> cartItems;
 
     public CartEntity() {
     }
 
-    public CartEntity(int id, UsersEntity userID, Set<CartItemsEntity> cartCartItem) {
+    public CartEntity(int id, UsersEntity user, Set<CartItemsEntity> cartItems) {
         this.id = id;
-        this.userID = userID;
-        this.cartCartItem = cartCartItem;
+        this.user = user;
+        this.cartItems = cartItems;
     }
 
     public int getId() {
@@ -34,19 +34,19 @@ public class CartEntity {
         this.id = id;
     }
 
-    public UsersEntity getUserID() {
-        return userID;
+    public UsersEntity getUser() {
+        return user;
     }
 
-    public void setUserID(UsersEntity userID) {
-        this.userID = userID;
+    public void setUser(UsersEntity user) {
+        this.user = user;
     }
 
-    public Set<CartItemsEntity> getCartCartItem() {
-        return cartCartItem;
+    public Set<CartItemsEntity> getCartItems() {
+        return cartItems;
     }
 
-    public void setCartCartItem(Set<CartItemsEntity> cartCartItem) {
-        this.cartCartItem = cartCartItem;
+    public void setCartItems(Set<CartItemsEntity> cartItems) {
+        this.cartItems = cartItems;
     }
 }

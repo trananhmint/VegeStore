@@ -1,6 +1,6 @@
 package org.hehe.vegestore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity(name = "paymentstatus")
@@ -12,16 +12,16 @@ public class PaymentStatusEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "paymentStatusID")
-    private Set<PaymentEntity> statusPayment;
+    @OneToMany(mappedBy = "paymentStatus")
+    private Set<PaymentEntity> payments;
 
     public PaymentStatusEntity() {
     }
 
-    public PaymentStatusEntity(int id, String description, Set<PaymentEntity> statusPayment) {
+    public PaymentStatusEntity(int id, String description, Set<PaymentEntity> payments) {
         this.id = id;
         this.description = description;
-        this.statusPayment = statusPayment;
+        this.payments = payments;
     }
 
     public int getId() {
@@ -40,11 +40,11 @@ public class PaymentStatusEntity {
         this.description = description;
     }
 
-    public Set<PaymentEntity> getStatusPayment() {
-        return statusPayment;
+    public Set<PaymentEntity> getPayments() {
+        return payments;
     }
 
-    public void setStatusPayment(Set<PaymentEntity> statusPayment) {
-        this.statusPayment = statusPayment;
+    public void setPayments(Set<PaymentEntity> payments) {
+        this.payments = payments;
     }
 }

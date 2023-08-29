@@ -1,6 +1,6 @@
 package org.hehe.vegestore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity(name = "reviews")
@@ -11,15 +11,15 @@ public class ReviewsEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UsersEntity userID;
+    private UsersEntity user;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private ProductsEntity productID;
+    private ProductsEntity product;
 
     @ManyToOne
     @JoinColumn(name = "rating_id")
-    private RatingEntity ratingID;
+    private RatingEntity rating;
 
     @Column(name = "review_text")
     private String reviewText;
@@ -30,11 +30,11 @@ public class ReviewsEntity {
     public ReviewsEntity() {
     }
 
-    public ReviewsEntity(int id, UsersEntity userID, ProductsEntity productID, RatingEntity ratingID, String reviewText, Date reviewDate) {
+    public ReviewsEntity(int id, UsersEntity user, ProductsEntity product, RatingEntity rating, String reviewText, Date reviewDate) {
         this.id = id;
-        this.userID = userID;
-        this.productID = productID;
-        this.ratingID = ratingID;
+        this.user = user;
+        this.product = product;
+        this.rating = rating;
         this.reviewText = reviewText;
         this.reviewDate = reviewDate;
     }
@@ -47,28 +47,28 @@ public class ReviewsEntity {
         this.id = id;
     }
 
-    public UsersEntity getUserID() {
-        return userID;
+    public UsersEntity getUser() {
+        return user;
     }
 
-    public void setUserID(UsersEntity userID) {
-        this.userID = userID;
+    public void setUser(UsersEntity user) {
+        this.user = user;
     }
 
-    public ProductsEntity getProductID() {
-        return productID;
+    public ProductsEntity getProduct() {
+        return product;
     }
 
-    public void setProductID(ProductsEntity productID) {
-        this.productID = productID;
+    public void setProduct(ProductsEntity product) {
+        this.product = product;
     }
 
-    public RatingEntity getRatingID() {
-        return ratingID;
+    public RatingEntity getRating() {
+        return rating;
     }
 
-    public void setRatingID(RatingEntity ratingID) {
-        this.ratingID = ratingID;
+    public void setRating(RatingEntity rating) {
+        this.rating = rating;
     }
 
     public String getReviewText() {
