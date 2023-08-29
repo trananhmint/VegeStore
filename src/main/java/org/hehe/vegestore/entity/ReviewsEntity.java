@@ -3,35 +3,35 @@ package org.hehe.vegestore.entity;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "Reviews")
+@Entity(name = "reviews")
 public class ReviewsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reviewID;
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "user_id")
     private UsersEntity userID;
 
     @ManyToOne
-    @JoinColumn(name = "ProductID")
+    @JoinColumn(name = "product_id")
     private ProductsEntity productID;
 
     @ManyToOne
-    @JoinColumn(name = "RatingID")
+    @JoinColumn(name = "rating_id")
     private RatingEntity ratingID;
 
-    @Column(name = "ReviewText")
+    @Column(name = "review_text")
     private String reviewText;
 
-    @Column(name = "ReviewDate")
+    @Column(name = "review_date")
     private Date reviewDate;
 
     public ReviewsEntity() {
     }
 
-    public ReviewsEntity(int reviewID, UsersEntity userID, ProductsEntity productID, RatingEntity ratingID, String reviewText, Date reviewDate) {
-        this.reviewID = reviewID;
+    public ReviewsEntity(int id, UsersEntity userID, ProductsEntity productID, RatingEntity ratingID, String reviewText, Date reviewDate) {
+        this.id = id;
         this.userID = userID;
         this.productID = productID;
         this.ratingID = ratingID;
@@ -39,12 +39,12 @@ public class ReviewsEntity {
         this.reviewDate = reviewDate;
     }
 
-    public int getReviewID() {
-        return reviewID;
+    public int getId() {
+        return id;
     }
 
-    public void setReviewID(int reviewID) {
-        this.reviewID = reviewID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public UsersEntity getUserID() {

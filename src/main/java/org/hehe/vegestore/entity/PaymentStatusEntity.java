@@ -3,13 +3,13 @@ package org.hehe.vegestore.entity;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "PaymentStatus")
+@Entity(name = "paymentstatus")
 public class PaymentStatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int paymentStatusID;
+    private int id;
 
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
     @OneToMany(mappedBy = "paymentStatusID")
@@ -18,17 +18,18 @@ public class PaymentStatusEntity {
     public PaymentStatusEntity() {
     }
 
-    public PaymentStatusEntity(String description, Set<PaymentEntity> statusPayment) {
+    public PaymentStatusEntity(int id, String description, Set<PaymentEntity> statusPayment) {
+        this.id = id;
         this.description = description;
         this.statusPayment = statusPayment;
     }
 
-    public int getPaymentStatusID() {
-        return paymentStatusID;
+    public int getId() {
+        return id;
     }
 
-    public void setPaymentStatusID(int paymentStatusID) {
-        this.paymentStatusID = paymentStatusID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescription() {

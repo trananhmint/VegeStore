@@ -7,30 +7,30 @@ import javax.persistence.*;
 public class OrderItemsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int orderItemID;
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name = "OrderID", insertable = false, updatable = false)
+    @JoinColumn(name = "order_id", insertable = false, updatable = false)
     private OrdersEntity orderID;
 
     @ManyToOne
-    @JoinColumn(name = "ProductID", insertable = false, updatable = false)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private ProductsEntity productID;
 
-    @Column(name = "Quantity")
+    @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "UnitPrice")
+    @Column(name = "unit_price")
     private float unitPrice;
 
-    @Column(name = "TotalPrice")
+    @Column(name = "total_price")
     private float totalPrice;
 
     public OrderItemsEntity() {
     }
 
-    public OrderItemsEntity(int orderItemID, OrdersEntity orderID, ProductsEntity productID, int quantity, float unitPrice, float totalPrice) {
-        this.orderItemID = orderItemID;
+    public OrderItemsEntity(int id, OrdersEntity orderID, ProductsEntity productID, int quantity, float unitPrice, float totalPrice) {
+        this.id = id;
         this.orderID = orderID;
         this.productID = productID;
         this.quantity = quantity;
@@ -38,12 +38,12 @@ public class OrderItemsEntity {
         this.totalPrice = totalPrice;
     }
 
-    public int getOrderItemID() {
-        return orderItemID;
+    public int getId() {
+        return id;
     }
 
-    public void setOrderItemID(int orderItemID) {
-        this.orderItemID = orderItemID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public OrdersEntity getOrderID() {

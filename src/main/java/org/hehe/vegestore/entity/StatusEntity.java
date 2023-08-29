@@ -2,13 +2,13 @@ package org.hehe.vegestore.entity;
 
 import javax.persistence.*;
 import java.util.Set;
-@Entity(name = "Status")
+@Entity(name = "status")
 public class StatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int statusID;
 
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
     @OneToMany(mappedBy = "statusID")

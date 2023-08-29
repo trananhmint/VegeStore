@@ -4,14 +4,14 @@ package org.hehe.vegestore.entity;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "Cart")
+@Entity(name = "cart")
 public class CartEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cartID;
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "user_id")
     private UsersEntity userID;
 
     @OneToMany(mappedBy = "cartID")
@@ -20,18 +20,18 @@ public class CartEntity {
     public CartEntity() {
     }
 
-    public CartEntity(int cartID, UsersEntity userID, Set<CartItemsEntity> cartCartItem) {
-        this.cartID = cartID;
+    public CartEntity(int id, UsersEntity userID, Set<CartItemsEntity> cartCartItem) {
+        this.id = id;
         this.userID = userID;
         this.cartCartItem = cartCartItem;
     }
 
-    public int getCartID() {
-        return cartID;
+    public int getId() {
+        return id;
     }
 
-    public void setCartID(int cartID) {
-        this.cartID = cartID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public UsersEntity getUserID() {

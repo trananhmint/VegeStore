@@ -2,15 +2,16 @@ package org.hehe.vegestore.payload.request;
 
 import org.hehe.vegestore.entity.UsersEntity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class CategoryResquest {
     private int categoryID;
     private String name;
     private int creationUserID;
-    private Date creationTimestamp;
+    private Timestamp creationTimestamp;
     private int lastUpdateUserID;
-    private Date lastUpdateTimestamp;
+    private Timestamp lastUpdateTimestamp;
 
     public CategoryResquest(int categoryID) {
         this.categoryID = categoryID;
@@ -40,11 +41,11 @@ public class CategoryResquest {
         this.creationUserID = creationUserID;
     }
 
-    public Date getCreationTimestamp() {
+    public Timestamp getCreationTimestamp() {
         return creationTimestamp;
     }
 
-    public void setCreationTimestamp(Date creationTimestamp) {
+    public void setCreationTimestamp(Timestamp creationTimestamp) {
         this.creationTimestamp = creationTimestamp;
     }
 
@@ -56,11 +57,11 @@ public class CategoryResquest {
         this.lastUpdateUserID = lastUpdateUserID;
     }
 
-    public Date getLastUpdateTimestamp() {
+    public Timestamp getLastUpdateTimestamp() {
         return lastUpdateTimestamp;
     }
 
-    public void setLastUpdateTimestamp(Date lastUpdateTimestamp) {
+    public void setLastUpdateTimestamp(Timestamp lastUpdateTimestamp) {
         this.lastUpdateTimestamp = lastUpdateTimestamp;
     }
 }

@@ -6,44 +6,44 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity(name = "Users")
+@Entity(name = "users")
 public class UsersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userID;
 
-    @Column(name = "FirstName")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "LastName")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column (name = "UserName")
+    @Column (name = "username")
     private String userName;
 
-    @Column (name = "Password")
+    @Column (name = "password")
     private String password;
 
-    @Column (name = "Email")
+    @Column (name = "email")
     private String email;
 
-    @Column (name = "PhoneNo")
+    @Column (name = "phone_no")
     private String phone;
 
-    @Column (name = "DOB")
+    @Column (name = "dob")
     private Date dob;
 
-    @Column (name = "Gender")
+    @Column (name = "gender")
     private String gender;
 
-    @Column (name = "RegistrationDate")
+    @Column (name = "registration_time")
     private Date registrationDate;
 
-    @Column (name = "LastLoginDate")
+    @Column (name = "last_login_date")
     private Date lastLoginDate;
 
     @ManyToOne
-    @JoinColumn(name = "StatusID")
+    @JoinColumn(name = "status_id")
     private StatusEntity statusID;
 
     @OneToMany(mappedBy = "creationUserID")
@@ -255,5 +255,4 @@ public class UsersEntity {
     public void setUserShippingAddress(Set<ShippingAddressEntity> userShippingAddress) {
         this.userShippingAddress = userShippingAddress;
     }
-
 }

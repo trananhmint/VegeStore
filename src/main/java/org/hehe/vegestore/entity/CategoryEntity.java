@@ -2,44 +2,42 @@ package org.hehe.vegestore.entity;
 
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Set;
 
-@Entity(name = "Category")
+@Entity(name = "category")
 public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int categoryID;
+    private int id;
 
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "CreationUserID")
+    @JoinColumn(name = "creation_user_id")
     private UsersEntity creationUserID;
 
-    @Column(name = "CreationTimestamp")
+    @Column(name = "creation_timestamp")
     private Date creationTimestamp;
 
     @ManyToOne
-    @JoinColumn(name = "LastUpdateUserID")
+    @JoinColumn(name = "last_update_userid")
     private UsersEntity lastUpdateUserID;
 
-    @Column(name = "LastUpdateTimestamp")
+    @Column(name = "last_update_timestamp")
     private Date lastUpdateTimestamp;
 
     @ManyToOne
-    @JoinColumn(name = "StatusID")
+    @JoinColumn(name = "status_id")
     private StatusEntity statusID;
 
     @OneToMany(mappedBy = "categoryID")
     private Set<ProductsEntity> categoryProduct;
 
-    public CategoryEntity() {
-    }
-
-    public CategoryEntity(int categoryID, String name, UsersEntity creationUserID, Date creationTimestamp, UsersEntity lastUpdateUserID, Date lastUpdateTimestamp, StatusEntity statusID, Set<ProductsEntity> categoryProduct) {
-        this.categoryID = categoryID;
+    public CategoryEntity(int id, String name, UsersEntity creationUserID, Date creationTimestamp, UsersEntity lastUpdateUserID, Date lastUpdateTimestamp, StatusEntity statusID, Set<ProductsEntity> categoryProduct) {
+        this.id = id;
         this.name = name;
         this.creationUserID = creationUserID;
         this.creationTimestamp = creationTimestamp;
@@ -49,12 +47,15 @@ public class CategoryEntity {
         this.categoryProduct = categoryProduct;
     }
 
-    public int getCategoryID() {
-        return categoryID;
+    public CategoryEntity() {
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

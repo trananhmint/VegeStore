@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(name = "/category")
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired
@@ -23,8 +23,10 @@ public class CategoryController {
     @GetMapping("")
     public ResponseEntity<?> getAllCategory(){
         BaseResponse response = new BaseResponse();
+        response.setStatusCode(200);
+        response.setMessage("OK");
         response.setData(iCategoryService.getAllCategory());
-        return new ResponseEntity<>("", HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

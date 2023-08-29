@@ -3,40 +3,40 @@ package org.hehe.vegestore.entity;
 
 import javax.persistence.*;
 
-@Entity(name = "CartItems")
+@Entity(name = "cartitems")
 public class CartItemsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cartItemID;
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name = "CartID", insertable = false,updatable = false)
+    @JoinColumn(name = "cart_id", insertable = false,updatable = false)
     private CartEntity cartID;
 
     @ManyToOne
-    @JoinColumn(name = "ProductID", insertable = false,updatable = false)
+    @JoinColumn(name = "product_id", insertable = false,updatable = false)
     private ProductsEntity productID;
 
-    @Column(name = "Quantity")
+    @Column(name = "quantity")
     private int quantity;
 
     public CartItemsEntity() {
     }
 
-    public CartItemsEntity(int cartItemID, CartEntity cartID, ProductsEntity productID, int quantity) {
-        this.cartItemID = cartItemID;
+    public CartItemsEntity(int id, CartEntity cartID, ProductsEntity productID, int quantity) {
+        this.id = id;
         this.cartID = cartID;
         this.productID = productID;
         this.quantity = quantity;
     }
 
-    public int getCartItemID() {
-        return cartItemID;
+    public int getId() {
+        return id;
     }
 
-    public void setCartItemID(int cartItemID) {
-        this.cartItemID = cartItemID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public CartEntity getCartID() {

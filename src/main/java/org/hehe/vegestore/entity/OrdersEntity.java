@@ -5,24 +5,24 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity(name = "Orders")
+@Entity(name = "orders")
 public class OrdersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int orderID;
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "user_id")
     private UsersEntity userID;
 
-    @Column(name = "OrderDate")
+    @Column(name = "order_date")
     private Date orderDate;
 
-    @Column(name = "TotalAmount")
+    @Column(name = "total_amount")
     private float totalAmount;
 
     @ManyToOne
-    @JoinColumn(name = "OrderStatusID")
+    @JoinColumn(name = "order_status_id")
     private OrderStatusEntity orderStatusID;
 
     @OneToMany(mappedBy = "orderID")
@@ -31,12 +31,25 @@ public class OrdersEntity {
     @OneToMany(mappedBy = "orderID")
     private Set<PaymentEntity> orderPayment;
 
-    public int getOrderID() {
-        return orderID;
+    public OrdersEntity() {
     }
 
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
+    public OrdersEntity(int id, UsersEntity userID, Date orderDate, float totalAmount, OrderStatusEntity orderStatusID, Set<OrderItemsEntity> orderOrderItem, Set<PaymentEntity> orderPayment) {
+        this.id = id;
+        this.userID = userID;
+        this.orderDate = orderDate;
+        this.totalAmount = totalAmount;
+        this.orderStatusID = orderStatusID;
+        this.orderOrderItem = orderOrderItem;
+        this.orderPayment = orderPayment;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public UsersEntity getUserID() {
@@ -77,5 +90,13 @@ public class OrdersEntity {
 
     public void setOrderOrderItem(Set<OrderItemsEntity> orderOrderItem) {
         this.orderOrderItem = orderOrderItem;
+    }
+
+    public Set<PaymentEntity> getOrderPayment() {
+        return orderPayment;
+    }
+
+    public void setOrderPayment(Set<PaymentEntity> orderPayment) {
+        this.orderPayment = orderPayment;
     }
 }

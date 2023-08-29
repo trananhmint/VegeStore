@@ -27,7 +27,7 @@ public class CategoryService implements ICategoryService {
         for (CategoryEntity item : list ) {
             //Duyệt qua từng dòng dữ liệu query được từ CategorEntity
             CategoryResponse categoryResponse = new CategoryResponse();
-            categoryResponse.setCategoryID(item.getCategoryID());
+            categoryResponse.setCategoryID(item.getId());
             categoryResponse.setName(item.getName());
 
             responseList.add(categoryResponse);
@@ -41,7 +41,7 @@ public class CategoryService implements ICategoryService {
     public boolean addProduct(CategoryResquest categoryResquest) {
         try {
             CategoryEntity categoryEntity= new CategoryEntity();
-            categoryEntity.setCategoryID(categoryResquest.getCategoryID());
+            categoryEntity.setId(categoryResquest.getCategoryID());
             categoryEntity.setName(categoryResquest.getName());
 
             UsersEntity usersEntity = new UsersEntity();

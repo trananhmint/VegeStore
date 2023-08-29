@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(name = "/product")
+@RequestMapping("/product")
 public class ProductsController {
 
     @Autowired
@@ -28,12 +28,9 @@ public class ProductsController {
     }
 
     @GetMapping("/category/{id}")
-    public ResponseEntity<?> getProductByCategory(HttpServletRequest request, @PathVariable int id){
-
-        String hostName = request.getHeader("host");
-
+    public ResponseEntity<?> getProductByCategory(@PathVariable int id){
         BaseResponse response = new BaseResponse();
-        response.setData(iProductsService.getProductByCategoryId(hostName,id));
+        response.setData(iProductsService.getProductByCategoryId(id));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

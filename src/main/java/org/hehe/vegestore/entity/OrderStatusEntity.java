@@ -5,13 +5,13 @@ package org.hehe.vegestore.entity;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "OrderStatus")
+@Entity(name = "orderstatus")
 public class OrderStatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int orderStatusID;
+    protected int id;
 
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
     @OneToMany(mappedBy = "orderStatusID")
@@ -20,18 +20,18 @@ public class OrderStatusEntity {
     public OrderStatusEntity() {
     }
 
-    public OrderStatusEntity(int orderStatusID, String description, Set<OrdersEntity> orderStatusOrder) {
-        this.orderStatusID = orderStatusID;
+    public OrderStatusEntity(int id, String description, Set<OrdersEntity> orderStatusOrder) {
+        this.id = id;
         this.description = description;
         this.orderStatusOrder = orderStatusOrder;
     }
 
-    public int getOrderStatusID() {
-        return orderStatusID;
+    public int getId() {
+        return id;
     }
 
-    public void setOrderStatusID(int orderStatusID) {
-        this.orderStatusID = orderStatusID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescription() {

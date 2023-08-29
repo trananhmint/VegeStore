@@ -9,6 +9,8 @@ import org.hehe.vegestore.service.imp.IProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,13 +23,12 @@ public class ProductsService implements IProductsService {
         Optional<ProductsEntity> product = productsRepository.findById(id);
         ProductsResponse productResponse = new ProductsResponse();
         if(product.isPresent()){
-            productResponse.setProductID(product.get().getProductID());
+            productResponse.setProductID(product.get().getId());
             productResponse.setImageURL(product.get().getImageURL());
             productResponse.setPrice(product.get().getPrice());
             productResponse.setName(product.get().getName());
             productResponse.setDescription(product.get().getDescription());
         }
-
         return productResponse;
     }
 
@@ -41,7 +42,7 @@ public class ProductsService implements IProductsService {
             productsEntity.setQuantity(productsResquest.getQuantity());
 
             CategoryEntity categoryEntity = new CategoryEntity();
-            categoryEntity.setCategoryID(productsResquest.getCategoryID());
+            categoryEntity.setId(productsResquest.getCategoryID());
 
             productsEntity.setCategoryID(categoryEntity);
 
@@ -50,6 +51,23 @@ public class ProductsService implements IProductsService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public List<ProductsResponse> getProductByCategoryId(int id) {
+        List<ProductsEntity> list = productsRepository.findByCategoryID(id);
+        List<ProductsResponse> listResponse = new ArrayList<>();
+        for (ProductsEntity entity : list) {
+            ProductsResponse response = new ProductsResponse();
+            response.setName(entity.getName());
+            response.setProductID(entity.getId());
+            response.setDescription(entity.getDescription());
+            response.setPrice(entity.getPrice());
+            response.setImageURL(entity.getImageURL());
+            response.setQuantity(entity.getQuantity());
+            listResponse.add(response);
+        }
+        return listResponse;
     }
 
 }
