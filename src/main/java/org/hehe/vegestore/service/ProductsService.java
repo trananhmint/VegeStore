@@ -18,6 +18,22 @@ public class ProductsService implements IProductsService {
     @Autowired
     ProductsRepository productsRepository;
 
+    public List<ProductsResponse> getAllProducts() {
+        List<ProductsResponse> listResponse = new ArrayList<>();
+        List<ProductsEntity> list = productsRepository.findAll();
+        for (ProductsEntity entity : list) {
+            ProductsResponse productsResponse = new ProductsResponse();
+            productsResponse.setProductID(entity.getId());
+            productsResponse.setName(entity.getName());
+            productsResponse.setDescription(entity.getDescription());
+            productsResponse.setQuantity(entity.getQuantity());
+            productsResponse.setPrice(entity.getPrice());
+            productsResponse.setImageURL(entity.getImageURL());
+            listResponse.add(productsResponse);
+        }
+        return listResponse;
+    }
+
     @Override
     public ProductsResponse getDetailProduct(int id) {
         Optional<ProductsEntity> productsEntity = productsRepository.findById(id);
@@ -29,6 +45,7 @@ public class ProductsService implements IProductsService {
             productsResponse.setPrice(productsEntity.get().getPrice());
             productsResponse.setName(productsEntity.get().getName());
             productsResponse.setDescription(productsEntity.get().getDescription());
+            productsResponse.setQuantity(productsEntity.get().getQuantity());
         }
         return productsResponse;
     }
