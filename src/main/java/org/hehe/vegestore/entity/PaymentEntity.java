@@ -14,7 +14,7 @@ public class PaymentEntity {
     private OrdersEntity order;
 
     @Column(name = "payment_amount")
-    private int paymentAmount;
+    private float paymentAmount;
 
     @Column(name = "payment_date")
     private Date paymentDate;
@@ -29,7 +29,7 @@ public class PaymentEntity {
     public PaymentEntity() {
     }
 
-    public PaymentEntity(int id, OrdersEntity order, int paymentAmount, Date paymentDate, String paymentMethod, PaymentStatusEntity paymentStatus) {
+    public PaymentEntity(int id, OrdersEntity order, float paymentAmount, Date paymentDate, String paymentMethod, PaymentStatusEntity paymentStatus) {
         this.id = id;
         this.order = order;
         this.paymentAmount = paymentAmount;
@@ -54,11 +54,11 @@ public class PaymentEntity {
         this.order = order;
     }
 
-    public int getPaymentAmount() {
+    public float getPaymentAmount() {
         return paymentAmount;
     }
 
-    public void setPaymentAmount(int paymentAmount) {
+    public void setPaymentAmount(float paymentAmount) {
         this.paymentAmount = paymentAmount;
     }
 

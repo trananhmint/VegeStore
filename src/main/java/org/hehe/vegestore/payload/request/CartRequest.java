@@ -5,33 +5,27 @@ import org.hehe.vegestore.payload.response.UsersResponse;
 import java.util.List;
 
 public class CartRequest {
-    private int id;
-    private UsersResponse usersResponse;
+    private UserRequest userRequest;
     private List<CartItemRequest> listCartItem;
+    private PaymentRequest paymentRequest;
+    private ShippingAddressRequest shippingAddressRequest;
 
     public CartRequest() {
     }
 
-    public CartRequest(int id, UsersResponse usersResponse, List<CartItemRequest> listCartItem) {
-        this.id = id;
-        this.usersResponse = usersResponse;
+    public CartRequest(UserRequest userRequest, List<CartItemRequest> listCartItem, PaymentRequest paymentRequest, ShippingAddressRequest shippingAddressRequest) {
+        this.userRequest = userRequest;
         this.listCartItem = listCartItem;
+        this.paymentRequest = paymentRequest;
+        this.shippingAddressRequest = shippingAddressRequest;
     }
 
-    public int getId() {
-        return id;
+    public UserRequest getUserRequest() {
+        return userRequest;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public UsersResponse getUsersResponse() {
-        return usersResponse;
-    }
-
-    public void setUsersResponse(UsersResponse usersResponse) {
-        this.usersResponse = usersResponse;
+    public void setUserRequest(UserRequest userRequest) {
+        this.userRequest = userRequest;
     }
 
     public List<CartItemRequest> getListCartItem() {
@@ -40,5 +34,21 @@ public class CartRequest {
 
     public void setListCartItem(List<CartItemRequest> listCartItem) {
         this.listCartItem = listCartItem;
+    }
+
+    public PaymentRequest getPaymentRequest() {
+        return paymentRequest;
+    }
+
+    public void setPaymentRequest(PaymentRequest paymentRequest) {
+        this.paymentRequest = paymentRequest;
+    }
+
+    public ShippingAddressRequest getShippingAddressRequest() {
+        return shippingAddressRequest;
+    }
+
+    public void setShippingAddressRequest(ShippingAddressRequest shippingAddressRequest) {
+        this.shippingAddressRequest = shippingAddressRequest;
     }
 }

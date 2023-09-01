@@ -1,6 +1,7 @@
 package org.hehe.vegestore.payload.response;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderResponse {
     private int id;
@@ -11,11 +12,12 @@ public class OrderResponse {
     private OrderStatusResponse orderStatusResponse;
 
     private PaymentResponse paymentResponse;
+    private List<OrderItemResponse> listOrderItems;
 
     public OrderResponse() {
     }
 
-    public OrderResponse(int id, UsersResponse usersResponse, Date orderDate, float totalAmount, ShippingAdressResponse shippingAdressResponse, OrderStatusResponse orderStatusResponse, PaymentResponse paymentResponse) {
+    public OrderResponse(int id, UsersResponse usersResponse, Date orderDate, float totalAmount, ShippingAdressResponse shippingAdressResponse, OrderStatusResponse orderStatusResponse, PaymentResponse paymentResponse, List<OrderItemResponse> listOrderItems) {
         this.id = id;
         this.usersResponse = usersResponse;
         this.orderDate = orderDate;
@@ -23,6 +25,7 @@ public class OrderResponse {
         this.shippingAdressResponse = shippingAdressResponse;
         this.orderStatusResponse = orderStatusResponse;
         this.paymentResponse = paymentResponse;
+        this.listOrderItems = listOrderItems;
     }
 
     public int getId() {
@@ -79,5 +82,13 @@ public class OrderResponse {
 
     public void setPaymentResponse(PaymentResponse paymentResponse) {
         this.paymentResponse = paymentResponse;
+    }
+
+    public List<OrderItemResponse> getListOrderItems() {
+        return listOrderItems;
+    }
+
+    public void setListOrderItems(List<OrderItemResponse> listOrderItems) {
+        this.listOrderItems = listOrderItems;
     }
 }

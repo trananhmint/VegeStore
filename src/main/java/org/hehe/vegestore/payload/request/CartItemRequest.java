@@ -3,7 +3,6 @@ package org.hehe.vegestore.payload.request;
 public class CartItemRequest {
     private ProductsResquest productsResquest;
     private int quantity;
-    private float total = productsResquest.getPrice() * quantity;
 
     public CartItemRequest() {
     }
@@ -27,13 +26,5 @@ public class CartItemRequest {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public float getTotal() {
-        return total;
-    }
-
-    public void setTotal(float total) {
-        this.total = total;
     }
 }

@@ -9,6 +9,19 @@ public class ProductsResquest {
     private int quantity;
     private String imageURL;
 
+    public ProductsResquest() {
+    }
+
+    public ProductsResquest(int productID, String name, String description, float price, int categoryID, int quantity, String imageURL) {
+        this.productID = productID;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.categoryID = categoryID;
+        this.quantity = quantity;
+        this.imageURL = imageURL;
+    }
+
     public int getProductID() {
         return productID;
     }
