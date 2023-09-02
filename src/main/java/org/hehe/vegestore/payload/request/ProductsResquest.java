@@ -11,6 +11,9 @@ public class ProductsResquest {
 
     public ProductsResquest() {
     }
+    public ProductsResquest(int productID) {
+        this.productID = productID;
+    }
 
     public ProductsResquest(int productID, String name, String description, float price, int categoryID, int quantity, String imageURL) {
         this.productID = productID;

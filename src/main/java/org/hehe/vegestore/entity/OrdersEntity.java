@@ -112,4 +112,18 @@ public class OrdersEntity {
     public void setPayments(Set<PaymentEntity> payments) {
         this.payments = payments;
     }
+
+    @Override
+    public String toString() {
+        return "OrdersEntity{" +
+                "id=" + id +
+                ", user=" + user +
+                ", orderDate=" + orderDate +
+                ", totalAmount=" + totalAmount +
+                ", shippingAddress=" + shippingAddress +
+                ", orderStatus=" + orderStatus +
+                ", orderItems=" + orderItems +
+                ", payments=" + payments +
+                '}';
+    }
 }

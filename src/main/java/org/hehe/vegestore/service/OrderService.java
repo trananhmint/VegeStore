@@ -115,7 +115,20 @@ public class OrderService {
                 ShippingAddressEntity shippingAddress = shippingAddressRepository.saveAndFlush(shippingAddressEntity1);
             ordersEntity.setShippingAddress(shippingAddress);
             OrdersEntity orderEntity = orderRepository.saveAndFlush(ordersEntity);
-
+            //Add list of Cart Items
+            List<OrderItemsEntity> listCartItems = new ArrayList<>();
+            for (CartItemRequest request : cartRequest.getListCartItem()) {
+                OrderItemsEntity orderItems = new OrderItemsEntity();
+                orderItems.setOrder(orderEntity);
+                ProductsEntity productsEntity = new ProductsEntity();
+                productsEntity.setId(request.getProductsResquest().getProductID());
+                orderItems.setProduct(productsEntity);
+                orderItems.setQuantity(request.getQuantity());
+                orderItems.setTotalPrice(0);
+                orderItems.setUnitPrice(0);
+                orderItemRepository.saveAndFlush(orderItems);
+                listCartItems.add(orderItems);
+            }
             //Add new payment
             PaymentEntity paymentEntity = new PaymentEntity();
             paymentEntity.setOrder(orderEntity);

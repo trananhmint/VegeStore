@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order/api/v1")
+@CrossOrigin
 public class OrderController {
     @Autowired
     private OrderService orderService;
